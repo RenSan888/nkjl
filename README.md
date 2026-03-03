@@ -5,3 +5,5 @@
  venv\Scripts\activate
 
  python --version
+
+ python menubuddy.py
