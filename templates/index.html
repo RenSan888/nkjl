@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MenuBuddy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>MenuBuddy</h1>
+
+    <div class="container">
+        <h3>Add Menu from URL</h3>
+        <input type="text" id="menu-url" placeholder="Enter Menu URL">
+        <button id="add-url-btn">Add Menu</button>
+
+        <h3>Add Menu from Image</h3>
+        <input type="file" id="menu-image" accept="image/*">
+        <button id="add-image-btn">Upload Image</button>
+
+        <h3>Ask a Question</h3>
+        <textarea id="question" rows="3" placeholder="Type your question..."></textarea>
+        <button id="ask-btn">Ask</button>
+
+        <h3>Response:</h3>
+        <div id="response">Your answers will appear here...</div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
