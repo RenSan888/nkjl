@@ -8,7 +8,11 @@
 
  python --version
 
- python main.py
+  cd nkjl
+
+  pip install -r requirements.txt
+
+  python main.py
 
 ## Flask App
 
