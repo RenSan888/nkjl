@@ -1,4 +1,6 @@
-## How to run / Copy and paste this
+## How to
+
+ create .env for keys
  
  py -3.9 -m venv venv
  
