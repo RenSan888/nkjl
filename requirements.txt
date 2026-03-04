@@ -1,0 +1,9 @@
+google-genai
+embedchain
+requests
+beautifulsoup4
+pillow
+python-dotenv
+chromadb
+openai
+flask
