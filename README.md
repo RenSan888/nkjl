@@ -22,6 +22,8 @@
 
    pip install google-generativeai==0.2.0
 
+   maybe
+   
    if import google.generativeai as genai
 ModuleNotFoundError: No module named 'google.generativeai'
 
