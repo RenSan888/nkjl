@@ -1,6 +1,8 @@
 ## How to
 
  create .env for keys
+
+---------------------------
  
  py -3.9 -m venv venv
  
@@ -10,9 +12,27 @@
 
   cd nkjl
 
+----------------------------
+
   pip install -r requirements.txt
 
   python main.py
+
+ ----------------------------
+
+   pip install google-generativeai==0.2.0
+
+   if import google.generativeai as genai
+ModuleNotFoundError: No module named 'google.generativeai'
+
+-------------------------------
+
+  pip install greenlet==3.0.3
+
+  if note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for greenlet
+Failed to build greenlet
+ERROR: Could not build wheels for greenlet, which is required to install pyproject.toml-based projects
 
 ## Flask App
 
