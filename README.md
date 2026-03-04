@@ -6,8 +6,8 @@
 
  python --version
 
- python menubuddy.py
+ python main.py
 
 ## Flask App
 
- LINK http://127.0.0.1:5000/ui
+ LINK http://127.0.0.1:5000
