@@ -1,5 +1,7 @@
 ## How to
 
+ python menubuddy.py
+
  create .env for keys
 
 ---------------------------
