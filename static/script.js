@@ -29,7 +29,7 @@ async function addURL() {
 
   } catch (err) {
     console.error(err);
-    setResponse("❌ Error importing menu.");
+    setResponse("Error importing menu.");
   }
 }
 
@@ -58,12 +58,12 @@ async function addImage() {
       return setResponse(data.message || "Upload failed.");
     }
 
-    setResponse("✅ Image menu added successfully");
+    setResponse("Image menu added successfully");
     fileInput.value = "";
 
   } catch (err) {
     console.error(err);
-    setResponse("❌ Error uploading image.");
+    setResponse("Error uploading image.");
   }
 }
 
@@ -100,7 +100,7 @@ async function askQuestion() {
 
   } catch (err) {
     console.error(err);
-    setResponse("❌ Error asking question.");
+    setResponse("Error asking question.");
   }
 }
 
