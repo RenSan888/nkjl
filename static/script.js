@@ -4,8 +4,12 @@ document.getElementById("ask-btn").addEventListener("click", askQuestion);
 
 // -------------------- ADD MENU FROM URL --------------------
 async function addURL() {
-  const url = document.getElementById("menu-url").value.trim();
+  const urlInput = document.getElementById("menu-url");
+  const url = urlInput.value.trim();
+
   if (!url) return alert("Please enter a URL");
+
+  setResponse("Importing menu from URL...");
 
   try {
     const res = await fetch("/import_menu", {
@@ -17,23 +21,27 @@ async function addURL() {
     const data = await res.json();
 
     if (!res.ok) {
-      document.getElementById("response").innerText =
-        data.message || "Failed to import menu.";
-      return;
+      return setResponse(data.message || "Failed to import menu.");
     }
 
-    document.getElementById("response").innerText =
-      `Menu added successfully.\nItems added: ${data.items || "N/A"}`;
-  } catch (error) {
-    document.getElementById("response").innerText = "Error importing menu.";
-    console.error(error);
+    setResponse(`✅ Menu added\nItems: ${data.items}`);
+    urlInput.value = "";
+
+  } catch (err) {
+    console.error(err);
+    setResponse("❌ Error importing menu.");
   }
 }
 
 // -------------------- ADD MENU FROM IMAGE --------------------
 async function addImage() {
   const fileInput = document.getElementById("menu-image");
-  if (!fileInput.files.length) return alert("Please select an image");
+
+  if (!fileInput.files.length) {
+    return alert("Please select an image");
+  }
+
+  setResponse("Processing image...");
 
   const formData = new FormData();
   formData.append("image", fileInput.files[0]);
@@ -47,25 +55,26 @@ async function addImage() {
     const data = await res.json();
 
     if (!res.ok) {
-      document.getElementById("response").innerText =
-        data.message || "Failed to upload image.";
-      return;
+      return setResponse(data.message || "Upload failed.");
     }
 
-    document.getElementById("response").innerText =
-      data.message || "Image menu added successfully.";
-  } catch (error) {
-    document.getElementById("response").innerText = "Error uploading image.";
-    console.error(error);
+    setResponse("✅ Image menu added successfully");
+    fileInput.value = "";
+
+  } catch (err) {
+    console.error(err);
+    setResponse("❌ Error uploading image.");
   }
 }
 
 // -------------------- ASK QUESTION --------------------
 async function askQuestion() {
-  const question = document.getElementById("question").value.trim();
+  const textarea = document.getElementById("question");
+  const question = textarea.value.trim();
+
   if (!question) return alert("Please enter a question");
 
-  document.getElementById("response").innerText = "Thinking...";
+  setResponse("Thinking... 🤔");
 
   try {
     const res = await fetch("/ask_menu", {
@@ -77,19 +86,25 @@ async function askQuestion() {
     const data = await res.json();
 
     if (!res.ok) {
-      document.getElementById("response").innerText =
-        data.message || "Failed to get answer.";
-      return;
+      return setResponse(data.message || "Failed to get answer.");
     }
 
-    let displayText = data.answer || "No answer found.";
+    let output = data.answer;
+
     if (data.verification) {
-      displayText += `\n\n[Verification] ${data.verification}`;
+      output += `\n\n[Verification: ${data.verification}]`;
     }
 
-    document.getElementById("response").innerText = displayText;
-  } catch (error) {
-    document.getElementById("response").innerText = "Error asking question.";
-    console.error(error);
+    setResponse(output);
+    textarea.value = "";
+
+  } catch (err) {
+    console.error(err);
+    setResponse("❌ Error asking question.");
   }
+}
+
+// -------------------- HELPER --------------------
+function setResponse(text) {
+  document.getElementById("response").innerText = text;
 }
