@@ -21,7 +21,7 @@ rag_app = setup_rag_app()
 # -------------------- FLASK --------------------
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html") #connects to the HTML
 
 
 # -------------------- IMPORT MENU (URL OR IMAGE) --------------------
