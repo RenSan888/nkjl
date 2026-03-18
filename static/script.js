@@ -24,7 +24,7 @@ async function addURL() {
       return setResponse(data.message || "Failed to import menu.");
     }
 
-    setResponse(`✅ Menu added\nItems: ${data.items}`);
+    setResponse(`Menu added\nItems: ${data.items}`);
     urlInput.value = "";
 
   } catch (err) {
