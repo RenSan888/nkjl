@@ -4,6 +4,11 @@
 
  create .env for keys
 
+ --------------------------
+
+ pip install flask requests beautifulsoup4 pillow embedchain google-generativeai
+python app.py
+
 ---------------------------
  
  py -3.9 -m venv venv
